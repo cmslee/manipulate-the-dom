@@ -48,26 +48,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // Part 7
 
   const newDivBlogPost = document.createElement('div');
-  newDivBlogPost.classList.add('blog-post', 'purple')
-  const newH2 = document.createElement('h2');
-  newH2.innerHTML = 'Macau'
+  newDivBlogPost.classList.add('blog-post');
+  newDivBlogPost.classList.add('purple');
+  const newH1 = document.createElement('h1');
+  newH1.textContent = "Macau";
   const newPara = document.createElement('p');
-  newPara.innerHTML = 'I almost skidded into a casino!';
-
-  newDivBlogPost.append(newH2, newPara)
-  document.body.appendChild(newDivBlogPost)
-  console.log(newDivBlogPost)
-
-
-  // append Div to Body
-  // add ul and li as well ?
-
+  newPara.textContent = "I ALMOST SKIDDED INTO A CASINO!";
+  newDivBlogPost.append(newH1, newPara);
+  //this [0] is fascinating. lookg into someday...
+  main = document.getElementsByClassName('main')[0];
+  main.append(newDivBlogPost)  
+  
   // Part 8
-
-
+  
+  const quoteTitle = document.getElementById("quote-title")
+  quoteTitle.addEventListener("click", function () {
+    randomQuote()
+  })
   // Part 9
-
-
-
-
-});
+  
+  const blogPosts = document.querySelectorAll(".blog-post")
+  blogPosts.forEach((element) => {
+    element.addEventListener("mouseenter", (event) => {
+      element.classList.toggle('red')
+    })
+    element.addEventListener("mouseout", (event) => {
+      element.classList.toggle('purple')
+    });
+  })
+})
